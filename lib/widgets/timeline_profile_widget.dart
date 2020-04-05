@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hire_me/models/profile_model.dart';
+import 'package:hire_me/screens/profile_screen.dart';
 import 'package:hire_me/utils/utils.dart';
 
 class TimelineProfile extends StatefulWidget {
@@ -26,9 +27,11 @@ class _TimelineProfileState extends State<TimelineProfile> {
         itemCount: widget.profiles.length,
         itemBuilder: (context, index) {
           return GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileUser()));
+            },
             child: Padding(
-              padding: EdgeInsets.only(left: 20, right: 20),
+              padding: EdgeInsets.only(left: 20, right: 20,top: 5,bottom: 5),
               child: Container(
                 height: 160,
                 child: Card(
