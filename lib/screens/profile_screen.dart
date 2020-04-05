@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hire_me/utils/curved_clipper_util.dart';
+import 'package:hire_me/utils/clipping_util.dart';
 import 'package:hire_me/widgets/profile_card_widget.dart';
+import 'package:hire_me/widgets/projects_list_widget.dart';
 
 class ProfileUser extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class ProfileUser extends StatefulWidget {
 class _ProfileUserState extends State<ProfileUser> {
   @override
   Widget build(BuildContext context) {
+
     Widget bezierCurve(){
       return Padding(
         padding: const EdgeInsets.only(
@@ -36,9 +38,7 @@ class _ProfileUserState extends State<ProfileUser> {
                 ),
                 IconButton(
                   icon: const Icon(Icons.more_vert,color: Colors.white,),
-                  tooltip: 'Next page',
                   onPressed: () {
-
                   },
                 )
               ],),),
@@ -89,7 +89,8 @@ class _ProfileUserState extends State<ProfileUser> {
           child: Stack(
             children: [
               bezierCurve(),
-              ProfileCard()
+              ProfileCard(),
+              ProjectsList(),
             ],
           ),
         )
@@ -98,22 +99,4 @@ class _ProfileUserState extends State<ProfileUser> {
       floatingActionButton: hireMeButton,
     );
   }
-}
-
-class ClippingClass extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = Path();
-    path.lineTo(0.0, size.height-40);
-    path.quadraticBezierTo(size.width / 4, size.height,
-        size.width / 2, size.height);
-    path.quadraticBezierTo(size.width - (size.width / 4), size.height,
-        size.width, size.height - 40);
-    path.lineTo(size.width, 0.0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hire_me/utils/profile_data_util.dart';
+import 'package:hire_me/utils/mock_data_util.dart';
 import 'package:hire_me/widgets/timeline_profile_widget.dart';
 
 class Home extends StatefulWidget {
@@ -136,7 +136,7 @@ class _HomeState extends State<Home> {
           backgroundColor: Color(0xFFCBD8DF),centerTitle: true,
         ),
         body: TimelineProfile(
-          ProfileData.getData(),
+          MockData.getProfilesData(),
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add, size: 30),

@@ -1,7 +1,7 @@
 import 'package:hire_me/models/profile_model.dart';
 
-class ProfileData {
-  static List<Profile> getData() {
+class MockData {
+  static List<Profile> getProfilesData() {
     List<Profile> data = [
       Profile(
           "John Doe",
@@ -35,6 +35,15 @@ class ProfileData {
           500,
           300,
           3.0, [])
+    ];
+    return data;
+  }
+  static List<String> getProjectsPhoto() {
+    List<String> data = [
+      "assets/project1.jpg",
+      "assets/project2.jpg",
+      "assets/project3.jpg",
+      "assets/project4.jpg"
     ];
     return data;
   }
