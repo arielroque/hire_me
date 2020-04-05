@@ -74,7 +74,44 @@ class _ProfileCardState extends State<ProfileCard> {
     );
   }
 
-  Widget textFollow() {}
+  Widget textFollow() {
+    return Padding(
+      padding: EdgeInsets.only(left: 30, right: 30, top: 20),
+      child: Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Text(
+                "FOLLOWERS",
+                style: TextStyle(fontWeight: FontWeight.w200),
+              ),
+              Text(
+                "FOLLOWING",
+                style: TextStyle(fontWeight: FontWeight.w200),
+              )
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 7),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Text(
+                  "2500",
+                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
+                ),
+                Text(
+                  "257",
+                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
 
   final followButton = Padding(
     padding: const EdgeInsets.only(top: 10),
@@ -112,7 +149,7 @@ class _ProfileCardState extends State<ProfileCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 100, left: 20, right: 20),
+      padding: EdgeInsets.only(top: 140, left: 20, right: 20),
       child: Container(
         height: 280,
         child: Card(
@@ -126,41 +163,7 @@ class _ProfileCardState extends State<ProfileCard> {
                 textOccupation(),
                 textDescription(),
                 followButton,
-                Padding(
-                  padding: EdgeInsets.only(left: 30, right: 30, top: 20),
-                  child: Column(
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          Text(
-                            "FOLLOWERS",
-                            style: TextStyle(fontWeight: FontWeight.w200),
-                          ),
-                          Text(
-                            "FOLLOWING",
-                            style: TextStyle(fontWeight: FontWeight.w200),
-                          )
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 7),
-                        child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          Text(
-                            "2500",
-                            style: TextStyle(fontWeight: FontWeight.w900,fontSize: 20 ),
-                          ),
-                          Text(
-                            "257",
-                            style: TextStyle(fontWeight: FontWeight.w900,fontSize: 20),
-                          )
-                        ],
-                      ),)
-                    ],
-                  ),
-                ),
+                textFollow()
               ],
             )),
       ),

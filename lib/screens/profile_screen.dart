@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hire_me/utils/curved_clipper_util.dart';
-import 'package:hire_me/widgets/profile_card.dart';
+import 'package:hire_me/widgets/profile_card_widget.dart';
 
 class ProfileUser extends StatefulWidget {
   @override
@@ -11,6 +11,42 @@ class ProfileUser extends StatefulWidget {
 class _ProfileUserState extends State<ProfileUser> {
   @override
   Widget build(BuildContext context) {
+    Widget bezierCurve(){
+      return Padding(
+        padding: const EdgeInsets.only(
+            bottom: 2.0),
+        child:ClipPath(
+          clipper: ClippingClass(),
+          child: Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
+            height: 260.0,
+            child: Padding(
+              padding: EdgeInsets.only(top: 30),
+              child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                IconButton(icon: Icon(Icons.keyboard_backspace,color: Colors.white,size: 30,),),
+                Container(
+                  width: 180,
+                  child: Image.asset("assets/man1.png"),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.more_vert,color: Colors.white,),
+                  tooltip: 'Next page',
+                  onPressed: () {
+
+                  },
+                )
+              ],),),
+            color: Color(0xFFFF8A80),
+          ),
+        ),
+      );
+    }
 
     final hireMeButton = Padding(
       padding: const EdgeInsets.only(bottom: 20.0),
@@ -46,39 +82,13 @@ class _ProfileUserState extends State<ProfileUser> {
 
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Color(0xFFFF8A80),
-        actions: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.more_vert),
-          tooltip: 'Next page',
-          onPressed: () {
-
-          },
-        )
-      ],),
       body: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Container(
           color: Color(0xffffffff),
           child: Stack(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 2.0),
-                child:ClipPath(
-                  clipper: ClippingClass(),
-                  child: Container(
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width,
-                    height: 260.0,
-                    color: Color(0xFFFF8A80),
-                  ),
-                ),
-              ),
-
+              bezierCurve(),
               ProfileCard()
             ],
           ),
