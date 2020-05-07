@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hire_me/models/profile_model.dart';
 
 class ProfileCard extends StatefulWidget {
+  final Profile profile;
+
+  const ProfileCard({Key key, this.profile}) : super(key: key);
   @override
   _ProfileCardState createState() => _ProfileCardState();
 }
@@ -14,7 +18,7 @@ class _ProfileCardState extends State<ProfileCard> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            "JOHN DOE",
+            widget.profile.name,
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 27, fontWeight: FontWeight.w900, color: Colors.black),
@@ -51,7 +55,7 @@ class _ProfileCardState extends State<ProfileCard> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            "Ui/UX designer",
+           widget.profile.occupation,
             style: TextStyle(fontWeight: FontWeight.w300),
           )
         ],
@@ -65,7 +69,7 @@ class _ProfileCardState extends State<ProfileCard> {
       child: Column(
         children: <Widget>[
           Text(
-            "apaixonado por não sei o quefksfklsfsdfksfd",
+            widget.profile.description,
             style: TextStyle(fontWeight: FontWeight.w300),
             textAlign: TextAlign.justify,
           )

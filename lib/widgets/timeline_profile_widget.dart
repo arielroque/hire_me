@@ -14,11 +14,6 @@ class TimelineProfile extends StatefulWidget {
 }
 
 class _TimelineProfileState extends State<TimelineProfile> {
-  List<Color> colors = [
-    Color(0xFFFF8A80),
-    Color(0xFF72D9B4),
-    Color(0xFFC4D1D7)
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +23,7 @@ class _TimelineProfileState extends State<TimelineProfile> {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileUser()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileUser(profile: widget.profiles[index],index: index,)));
             },
             child: Padding(
               padding: EdgeInsets.only(left: 20, right: 20,top: 5,bottom: 5),
@@ -38,7 +33,7 @@ class _TimelineProfileState extends State<TimelineProfile> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
                     ),
-                    color: Utils.getRandomColor(colors,index),
+                    color: Utils.getRandomColor(index),
                     elevation: 10,
                     child: Row(
                       children: <Widget>[

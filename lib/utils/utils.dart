@@ -2,10 +2,17 @@ import 'dart:math';
 import 'dart:ui';
 
 class Utils {
-  static Color getRandomColor(List<Color> list, int index) {
-    if (index < list.length) {
-      return list[index];
+
+  static List<Color> colors = [
+    Color(0xFFFF8A80),
+    Color(0xFF72D9B4),
+    Color(0xFFC4D1D7)
+  ];
+
+  static Color getRandomColor( int index) {
+    if (index < colors.length) {
+      return colors[index];
     }
-    return list[index % list.length];
+    return colors[index % colors.length];
   }
 }

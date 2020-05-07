@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hire_me/utils/mock_data_util.dart';
+import 'package:hire_me/widgets/slide_profile_widget.dart';
 import 'package:hire_me/widgets/timeline_profile_widget.dart';
 
 class Home extends StatefulWidget {
@@ -132,11 +133,21 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Hire Me",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w800),),
-          backgroundColor: Color(0xFFCBD8DF),centerTitle: true,
+          title: Text(
+            "Hire Me",
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
+          ),
+          backgroundColor: Color(0xFFCBD8DF),
+          centerTitle: true,
         ),
-        body: TimelineProfile(
-          MockData.getProfilesData(),
+        body: Column(
+          children: <Widget>[
+
+            SliderProfile(MockData.getProfilesData()),
+            Expanded(child: TimelineProfile(
+              MockData.getProfilesData(),
+            ),)
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add, size: 30),
