@@ -12,6 +12,7 @@ class Profile {
   Profile(this._name, this._description, this._occupation,this._circlePhoto, this._photo,
       this._followers, this._following, this._yearsExperience, this._projectsPhotos);
 
+
   String get name => _name;
 
   String get description => _description;
