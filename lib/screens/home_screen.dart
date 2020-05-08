@@ -172,6 +172,7 @@ class _HomeState extends State<Home> {
                 ? IconButton(
                     icon: Icon(Icons.close),
                     onPressed: () {
+                      searchController.text = "";
                       setState(() {
                         isSearching = false;
                       });
@@ -191,7 +192,7 @@ class _HomeState extends State<Home> {
         ),
         body: Column(
           children: <Widget>[
-            SliderProfile(MockData.getProfilesDataStory()),
+            SliderProfile(MockData.getProfilesData()),
             Expanded(
               child: TimelineProfile(
                 MockData.getProfilesData(),

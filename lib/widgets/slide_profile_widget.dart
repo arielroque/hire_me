@@ -47,7 +47,7 @@ class _SliderProfileState extends State<SliderProfile> {
                               shape: BoxShape.circle,
                               image: new DecorationImage(
                                   fit: BoxFit.fill,
-                                  image: Image.asset(widget.profiles[index].photo).image))
+                                  image: Image.asset(widget.profiles[index].circlePhoto).image))
                       ),
                     ),
                       SizedBox(height: 1,),
