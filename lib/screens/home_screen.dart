@@ -11,6 +11,25 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentTab = 0;
+  bool isSearching = false;
+  final searchController = new TextEditingController();
+
+  Widget buildSearchField() {
+    return new TextField(
+      controller: searchController,
+      autofocus: true,
+      decoration: const InputDecoration(
+        hintText: 'Search...',
+        border: InputBorder.none,
+        hintStyle: const TextStyle(color: Colors.white30),
+      ),
+      style: const TextStyle(
+          color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w600),
+      onChanged: (value) {
+        setState(() {});
+      },
+    );
+  }
 
   Widget bottomNavigationBar() {
     return BottomAppBar(
@@ -133,20 +152,52 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
-            "Hire Me",
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
-          ),
+          leading: isSearching
+              ? BackButton(
+                  onPressed: () {
+                    setState(() {
+                      isSearching = false;
+                    });
+                  },
+                )
+              : Container(),
+          title: isSearching
+              ? buildSearchField()
+              : Text(
+                  "Hire Me",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
+                ),
+          actions: <Widget>[
+            isSearching
+                ? IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      setState(() {
+                        isSearching = false;
+                      });
+                    },
+                  )
+                : IconButton(
+                    icon: Icon(Icons.search),
+                    onPressed: () {
+                      setState(() {
+                        isSearching = true;
+                      });
+                    },
+                  )
+          ],
           backgroundColor: Color(0xFFCBD8DF),
           centerTitle: true,
         ),
         body: Column(
           children: <Widget>[
-
-            SliderProfile(MockData.getProfilesData()),
-            Expanded(child: TimelineProfile(
-              MockData.getProfilesData(),
-            ),)
+            SliderProfile(MockData.getProfilesDataStory()),
+            Expanded(
+              child: TimelineProfile(
+                MockData.getProfilesData(),
+                searchController.text,
+              ),
+            )
           ],
         ),
         floatingActionButton: FloatingActionButton(
