@@ -1,16 +1,6 @@
 # hire_me
 
-A new Flutter project.
+A simple design for an application to hire services developed in Flutter, based on the design created by Ketan (https://dribbble.com/shots/10587842-Designers-App)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Screenshot
+![hire_me model (1)](https://user-images.githubusercontent.com/17733053/81453636-7a1f9700-9160-11ea-8c78-64d66b7640e9.png)
