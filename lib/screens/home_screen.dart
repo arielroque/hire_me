@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hire_me/utils/mock_data_util.dart';
-import 'package:hire_me/widgets/slide_profile_widget.dart';
+import 'package:hire_me/widgets/profile_slider_widget.dart';
 import 'package:hire_me/widgets/timeline_profile_widget.dart';
 
 class Home extends StatefulWidget {
@@ -192,7 +192,7 @@ class _HomeState extends State<Home> {
         ),
         body: Column(
           children: <Widget>[
-            SliderProfile(MockData.getProfilesData()),
+           ProfileSlider(MockData.getProfilesData()),
             Expanded(
               child: TimelineProfile(
                 MockData.getProfilesData(),

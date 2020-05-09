@@ -4,16 +4,16 @@ import 'package:hire_me/models/profile_model.dart';
 import 'package:hire_me/screens/profile_screen.dart';
 import 'package:hire_me/utils/utils.dart';
 
-class SliderProfile extends StatefulWidget {
+class ProfileSlider extends StatefulWidget {
   final List<Profile> profiles;
 
-  const SliderProfile(this.profiles);
+  const ProfileSlider(this.profiles);
 
   @override
-  _SliderProfileState createState() => _SliderProfileState();
+  _ProfileSliderState createState() => _ProfileSliderState();
 }
 
-class _SliderProfileState extends State<SliderProfile> {
+class _ProfileSliderState extends State<ProfileSlider> {
   @override
   Widget build(BuildContext context) {
     return Container(
