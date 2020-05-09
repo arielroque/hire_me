@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hire_me/utils/profile_data_util.dart';
+import 'package:hire_me/utils/mock_data_util.dart';
+import 'package:hire_me/widgets/profile_slider_widget.dart';
 import 'package:hire_me/widgets/timeline_profile_widget.dart';
 
 class Home extends StatefulWidget {
@@ -10,6 +11,25 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentTab = 0;
+  bool isSearching = false;
+  final searchController = new TextEditingController();
+
+  Widget buildSearchField() {
+    return new TextField(
+      controller: searchController,
+      autofocus: true,
+      decoration: const InputDecoration(
+        hintText: 'Search...',
+        border: InputBorder.none,
+        hintStyle: const TextStyle(color: Colors.white30),
+      ),
+      style: const TextStyle(
+          color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w600),
+      onChanged: (value) {
+        setState(() {});
+      },
+    );
+  }
 
   Widget bottomNavigationBar() {
     return BottomAppBar(
@@ -132,11 +152,54 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Hire Me",style: TextStyle(fontSize: 25,fontWeight: FontWeight.w800),),
-          backgroundColor: Color(0xFFCBD8DF),centerTitle: true,
+          leading: isSearching
+              ? BackButton(
+                  onPressed: () {
+                    setState(() {
+                      isSearching = false;
+                    });
+                  },
+                )
+              : Container(),
+          title: isSearching
+              ? buildSearchField()
+              : Text(
+                  "Hire Me",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
+                ),
+          actions: <Widget>[
+            isSearching
+                ? IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      searchController.text = "";
+                      setState(() {
+                        isSearching = false;
+                      });
+                    },
+                  )
+                : IconButton(
+                    icon: Icon(Icons.search),
+                    onPressed: () {
+                      setState(() {
+                        isSearching = true;
+                      });
+                    },
+                  )
+          ],
+          backgroundColor: Color(0xFFCBD8DF),
+          centerTitle: true,
         ),
-        body: TimelineProfile(
-          ProfileData.getData(),
+        body: Column(
+          children: <Widget>[
+           ProfileSlider(MockData.getProfilesData()),
+            Expanded(
+              child: TimelineProfile(
+                MockData.getProfilesData(),
+                searchController.text,
+              ),
+            )
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add, size: 30),

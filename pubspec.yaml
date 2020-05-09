@@ -49,6 +49,10 @@ flutter:
     - assets/man2.png
     - assets/woman1.png
     - assets/woman2.png
+    - assets/project1.jpg
+    - assets/project2.jpg
+    - assets/project3.jpg
+    - assets/project4.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
